@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		dhsajhdja
+	</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<img class="items" src="http://imgur.com/zNy7I47.png">
+		<img class="items" src="http://imgur.com/FiOPfuv.png">
+		<img class="items" src="http://imgur.com/yOIdqwZ.png">
+		<img class="items" src="http://i.imgur.com/r90a7ZI.png">
+		<button id="btnLeft" onclick="setIndex(1)" class="btn"><</button>
+		<button id="btnRight" onclick="setIndex(-1)" class="btn">></button>
+	</div>
+		<button id="btnStart" onclick="setCondition(1)"> Start </button>
+		<button id="btnStop" onclick="setCondition(0)"> Stop </button>
+</body>
+<script type="text/javascript">
+	var index = 1;
+	var condition = 1;
+
+	function setIndex(x)	{
+		index += 1;
+		showImage(index);
+	}
+
+	function setCondition(x)	{
+		condition = x;
+		autoSlide();
+	}
+
+	showImage(1);
+
+	function showImage(x)	{
+		var i;
+		var images = document.getElementsByClassName("items");
+	
+		if (x > images.length)	{ this.index = 1 };
+		if (x < 1)	{ this.index = images.length };
+		for (i = 0; i < images.length; i++) {
+			images[i].style.display = 'none';
+		}
+		images[index-1].style.display = 'block';		
+	}
+	autoSlide();
+	function autoSlide()	{
+		if (condition === 1) {
+
+		var i;
+		var images = document.getElementsByClassName("items");
+	
+		for (i = 0; i < images.length; i++) {
+			images[i].style.display = 'none';
+		}
+	
+		if (this.index > images.length)	{ this.index = 1 };
+		images[index-1].style.display = 'block';	
+		index++;
+		setTimeout(autoSlide, 500, 1);	
+		}
+	}
+</script>
+</html>
